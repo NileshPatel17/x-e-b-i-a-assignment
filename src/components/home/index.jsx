@@ -9,7 +9,6 @@ import { Layout } from '../layout';
 export function Home() {
   const history = useHistory();
   const {state,dispatch}= useContext(AppStateContext);
-  console.log(state)
   const {loginUserName, results}=state;
   useEffect(() => {
     if (!loginUserName) {
