@@ -19,7 +19,7 @@ export function PlanetDetails() {
       {details && (
         <div class="max-w-sm rounded mb-2 p-4 shadow-lg">
           <div className="flex flex-col rounded">
-            <h1 className="uppercase text-indigo-600">{details.name}</h1>
+            <h1 className="uppercase text-2xl text-indigo-600">{details.name}</h1>
             <div>Population: {details.population}</div>
             <div>terrain: {details.terrain}</div>
             <div>climate: {details.climate}</div>

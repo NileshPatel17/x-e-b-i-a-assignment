@@ -11,7 +11,11 @@ export function Login() {
   const [errorMessage, setErrorMessage] = useState('');
   const onLogin = async () => {
     setErrorMessage('Authentication in progress...');
-    const isAuthenticated = await authenticate(userName, password);
+    const {isAuthenticated, error} = await authenticate(userName, password);
+    if(error){
+      setErrorMessage(error);
+      return;
+    }
     if (isAuthenticated) {
       dispatch({type:'LOGIN_SUCCESS',userName});
       history.push('/');
@@ -31,7 +35,7 @@ export function Login() {
     <section className="bg-grey-lighter h-screen">
       <div className="container mx-auto h-full flex justify-center items-center">
         <div className="w-1/3">
-          <h2 className="mb-1 mt-1 text-center">Login</h2>
+          <h2 className="mb-1 mt-1 text-center text-3xl text-bold">Login</h2>
           <div className="border-teal p-8 border-t-4 bg-white mb-6 rounded-lg shadow-lg">
             <div className="mb-4">
               <label htmlFor="userName" className="pr-10">
