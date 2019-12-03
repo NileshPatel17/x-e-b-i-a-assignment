@@ -6,8 +6,8 @@ import { AppStateContext } from '../../providers';
 export function Login() {
   const history = useHistory();
   const {dispatch} = useContext(AppStateContext);
-  const [userName, setUserName] = useState('Luke Skywalker');
-  const [password, setPassword] = useState('19BBY');
+  const [userName, setUserName] = useState(''); // Luke Skywalker
+  const [password, setPassword] = useState(''); // 19BBY
   const [errorMessage, setErrorMessage] = useState('');
   const onLogin = async () => {
     setErrorMessage('Authentication in progress...');
@@ -41,16 +41,16 @@ export function Login() {
               <label htmlFor="userName" className="pr-10">
                 User Name
               </label>
-              <input className="input__textbox" value={userName} onChange={onChange} placeholder="User Name" name="userName" />
+              <input data-test='input-username' className="input__textbox" value={userName} onChange={onChange} placeholder="User Name" name="userName" />
             </div>
             <div className="mb-4">
               <label htmlFor="password" className="pr-10">
                 Password
               </label>
-              <input className="input__textbox" value={password} onChange={onChange} placeholder="Password" type="password" name="password" />
+              <input data-test='input-password' className="input__textbox" value={password} onChange={onChange} placeholder="Password" type="password" name="password" />
             </div>
             <div className="mb-4">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold pt-2 py-1 px-4 rounded" onClick={onLogin}>
+              <button data-test="btn-login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold pt-2 py-1 px-4 rounded" onClick={onLogin}>
                 Login
               </button>
             </div>
