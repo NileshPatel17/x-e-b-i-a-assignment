@@ -1,36 +1,32 @@
 import React, { useState, useContext } from 'react';
 import { authenticate } from '../../utils';
+import { useInputValue } from '../../hooks';
 import { useHistory } from 'react-router-dom';
 import { AppStateContext } from '../../providers';
 
 export function Login() {
   const history = useHistory();
-  const {dispatch} = useContext(AppStateContext);
-  const [userName, setUserName] = useState(''); // Luke Skywalker
-  const [password, setPassword] = useState(''); // 19BBY
+  const { dispatch } = useContext(AppStateContext);
+  const userNameProps = useInputValue(''); // Luke Skywalker
+  const { value: userName } = userNameProps; // 19BBY
+  const passwordProps = useInputValue('');
+  const { value: password } = passwordProps;
   const [errorMessage, setErrorMessage] = useState('');
   const onLogin = async () => {
     setErrorMessage('Authentication in progress...');
-    const {isAuthenticated, error} = await authenticate(userName, password);
-    if(error){
+    const { isAuthenticated, error } = await authenticate(userName, password);
+    if (error) {
       setErrorMessage(error);
       return;
     }
     if (isAuthenticated) {
-      dispatch({type:'LOGIN_SUCCESS',userName});
+      dispatch({ type: 'LOGIN_SUCCESS', userName });
       history.push('/');
     } else {
       setErrorMessage('Invalid User or Password');
     }
   };
-  const onChange = event => {
-    setErrorMessage('')
-    if (event.target.name === 'userName') {
-      setUserName(event.target.value);
-    } else {
-      setPassword(event.target.value);
-    }
-  };
+
   return (
     <section className="bg-grey-lighter h-screen">
       <div className="container mx-auto h-full flex justify-center items-center">
@@ -41,13 +37,13 @@ export function Login() {
               <label htmlFor="userName" className="pr-10">
                 User Name
               </label>
-              <input data-test='input-username' className="input__textbox" value={userName} onChange={onChange} placeholder="User Name" name="userName" />
+              <input data-test="input-username" className="input__textbox" {...userNameProps} placeholder="User Name" name="userName" />
             </div>
             <div className="mb-4">
               <label htmlFor="password" className="pr-10">
                 Password
               </label>
-              <input data-test='input-password' className="input__textbox" value={password} onChange={onChange} placeholder="Password" type="password" name="password" />
+              <input data-test="input-password" className="input__textbox" {...passwordProps} placeholder="Password" type="password" name="password" />
             </div>
             <div className="mb-4">
               <button data-test="btn-login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold pt-2 py-1 px-4 rounded" onClick={onLogin}>
