@@ -626,10 +626,10 @@ video {
   line-height: 1.25
 }
 
-.input__textbox:hover{
+.input__textbox:focus{
   outline: 0;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-  border-color: #90cdf4
+  border-color: #ebf8ff
 }
 
 .input__textbox__search{
@@ -649,10 +649,10 @@ video {
   margin-bottom: 0.5rem
 }
 
-.input__textbox__search:hover{
+.input__textbox__search:focus{
   outline: 0;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-  border-color: #90cdf4
+  border-color: #ebf8ff
 }
 
 .sr-only {

@@ -34,13 +34,13 @@ export function Login() {
           <h2 className="mb-1 mt-1 text-center text-3xl text-bold">Login</h2>
           <div className="border-teal p-8 border-t-4 bg-white mb-6 rounded-lg shadow-lg">
             <div className="mb-4">
-              <label htmlFor="userName" className="pr-10">
+              <label htmlFor="userName" className="pr-10 pb-1 block">
                 User Name
               </label>
               <input data-test="input-username" className="input__textbox" {...userNameProps} placeholder="User Name" name="userName" />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="pr-10">
+              <label htmlFor="password" className="pr-10 pb-1 block">
                 Password
               </label>
               <input data-test="input-password" className="input__textbox" {...passwordProps} placeholder="Password" type="password" name="password" />
