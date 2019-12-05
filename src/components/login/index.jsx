@@ -13,6 +13,10 @@ export function Login() {
   const { value: password } = passwordProps;
   const [errorMessage, setErrorMessage] = useState('');
   const onLogin = async () => {
+    if(!userName || !password){
+      setErrorMessage('User Name or Password can be blank!');
+      return;
+    }
     setErrorMessage('Authentication in progress...');
     const { isAuthenticated, error } = await authenticate(userName, password);
     if (error) {
