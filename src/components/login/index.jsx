@@ -14,7 +14,7 @@ export function Login() {
   const [errorMessage, setErrorMessage] = useState('');
   const onLogin = async () => {
     if (!userName || !password) {
-      setErrorMessage('User Name or Password can be blank!');
+      setErrorMessage('User Name or Password can not be blank!');
       return;
     }
     setErrorMessage('Authentication in progress...');
@@ -33,7 +33,7 @@ export function Login() {
 
   return (
     <section className="bg-grey-lighter h-screen">
-      <div className="container mx-auto h-full flex justify-center items-center">
+      <div className="mx-auto h-full flex justify-center items-center">
         <div className="w-1/3">
           <h2 className="mb-1 mt-1 text-center text-3xl text-bold">Login</h2>
           <div className="border-teal p-8 border-t-4 bg-white mb-6 rounded-lg shadow-lg">
