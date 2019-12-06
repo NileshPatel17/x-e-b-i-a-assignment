@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { AppStateContext } from '../../providers';
+import React from 'react';
+import { useAppStateContext } from '../../providers';
 
 const debounce = (func, delay) => {
   let debounceTimer;
@@ -11,7 +11,7 @@ const debounce = (func, delay) => {
 };
 
 export function SearchBar({ onSearch }) {
-  const {state}=useContext(AppStateContext)
+  const {state}=useAppStateContext();
   const [input, setInput] = React.useState(state.searchText);
   const delayQuery = React.useRef(
     debounce(value => {

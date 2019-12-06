@@ -1,19 +1,19 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { authenticate } from '../../utils';
 import { useInputValue } from '../../hooks';
 import { useHistory } from 'react-router-dom';
-import { AppStateContext } from '../../providers';
+import { useAppStateContext } from '../../providers';
 
 export function Login() {
   const history = useHistory();
-  const { dispatch } = useContext(AppStateContext);
+  const { dispatch } = useAppStateContext();
   const userNameProps = useInputValue(''); // Luke Skywalker
   const { value: userName } = userNameProps; // 19BBY
   const passwordProps = useInputValue('');
   const { value: password } = passwordProps;
   const [errorMessage, setErrorMessage] = useState('');
   const onLogin = async () => {
-    if(!userName || !password){
+    if (!userName || !password) {
       setErrorMessage('User Name or Password can be blank!');
       return;
     }
