@@ -26,8 +26,6 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "prettier": "prettier \"src/**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\" --write",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "precommit": "lint-staged"
   },
